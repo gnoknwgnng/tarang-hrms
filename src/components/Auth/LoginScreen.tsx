@@ -30,9 +30,11 @@ export const LoginScreen: React.FC = () => {
         
         {/* Brand Logo */}
         <div className="inline-flex items-center space-x-3.5 p-2.5 bg-white/90 border border-slate-200 rounded-3xl shadow-xl backdrop-blur-xl">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-600 via-indigo-600 to-purple-600 flex items-center justify-center font-black text-2xl text-white shadow-lg shadow-sky-500/20">
-            T
-          </div>
+          <img 
+            src="/logo.png" 
+            alt="Tarang Logo" 
+            className="w-12 h-12 object-contain rounded-2xl bg-white p-1 border border-slate-200 shadow-sm" 
+          />
           <div className="text-left pr-3">
             <span className="text-2xl font-black tracking-tight bg-gradient-to-r from-slate-900 via-slate-800 to-sky-700 bg-clip-text text-transparent block">
               Tarang CRM + HRMS

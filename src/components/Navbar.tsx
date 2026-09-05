@@ -23,9 +23,11 @@ export const Navbar: React.FC = () => {
           
           {/* Brand Logo & Name */}
           <div className="flex items-center space-x-2.5 sm:space-x-3">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-sky-600 via-indigo-600 to-purple-600 flex items-center justify-center font-black text-base sm:text-xl text-white shadow-md shadow-sky-500/20">
-              T
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="Tarang Logo" 
+              className="w-9 h-9 sm:w-10 sm:h-10 object-contain rounded-xl bg-white p-1 border border-slate-200 shadow-sm" 
+            />
             <div>
               <span className="text-base sm:text-xl font-black tracking-tight bg-gradient-to-r from-slate-900 via-slate-800 to-sky-700 bg-clip-text text-transparent">
                 Tarang CRM
