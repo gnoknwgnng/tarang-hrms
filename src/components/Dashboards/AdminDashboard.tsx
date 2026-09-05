@@ -3,7 +3,12 @@ import { Lead, AdminModuleId } from '../../types';
 import { AdminSidebar } from '../Admin/AdminSidebar';
 import { AdminModuleViews } from '../Admin/AdminModuleViews';
 
-export const AdminDashboard: React.FC<{ onSelectLead: (lead: Lead) => void }> = ({ onSelectLead }) => {
+interface AdminDashboardProps {
+  onSelectLead: (lead: Lead) => void;
+  onOpenCreateLeadModal?: () => void;
+}
+
+export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onSelectLead, onOpenCreateLeadModal }) => {
   const [activeModule, setActiveModule] = useState<AdminModuleId>('home');
 
   return (
@@ -20,6 +25,7 @@ export const AdminDashboard: React.FC<{ onSelectLead: (lead: Lead) => void }> = 
         <AdminModuleViews
           activeModule={activeModule}
           onSelectLead={onSelectLead}
+          onOpenCreateLeadModal={onOpenCreateLeadModal}
         />
       </div>
 

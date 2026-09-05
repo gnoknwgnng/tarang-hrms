@@ -89,7 +89,10 @@ const MainApp: React.FC = () => {
         {activeMainTab === 'geo' && isAdmin ? (
           <GeoTrackingView />
         ) : currentUser.role === 'admin' ? (
-          <AdminDashboard onSelectLead={(lead) => setSelectedLead(lead)} />
+          <AdminDashboard 
+            onSelectLead={(lead) => setSelectedLead(lead)} 
+            onOpenCreateLeadModal={() => setIsLeadModalOpen(true)}
+          />
         ) : currentUser.role === 'bda' ? (
           <BdaDashboard 
             onSelectLead={(lead) => setSelectedLead(lead)} 

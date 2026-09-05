@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AdminModuleId } from '../../types';
 import { 
-  Home, MapPin, CheckSquare, Building2, Users, CalendarCheck, 
+  Home, UserCheck, MapPin, CheckSquare, Building2, Users, CalendarCheck, 
   CalendarOff, DollarSign, CreditCard, Receipt, FileText, Briefcase, 
   GitFork, BarChart3, HelpCircle, Award, Wallet, GraduationCap, 
   UserPlus, PackageSearch, ChevronLeft, ChevronRight, Menu, X 
@@ -28,6 +28,7 @@ export const ADMIN_MODULE_GROUPS: CategoryGroup[] = [
     category: 'People & Core HRMS',
     items: [
       { id: 'home', label: 'Home / Overview', icon: Home },
+      { id: 'leads', label: 'Leads Directory', icon: UserCheck },
       { id: 'employees', label: 'Employees', icon: Users },
       { id: 'attendance', label: 'Attendance', icon: CalendarCheck },
       { id: 'leave', label: 'Leave & Holidays', icon: CalendarOff },

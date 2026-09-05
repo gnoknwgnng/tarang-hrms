@@ -13,9 +13,10 @@ import { LeadOwnershipMatrix } from '../Leads/LeadOwnershipMatrix';
 interface EmployeeModuleViewsProps {
   activeTab: EmployeeTabId;
   onSelectLead?: (lead: Lead) => void;
+  onOpenCreateLeadModal?: () => void;
 }
 
-export const EmployeeModuleViews: React.FC<EmployeeModuleViewsProps> = ({ activeTab, onSelectLead }) => {
+export const EmployeeModuleViews: React.FC<EmployeeModuleViewsProps> = ({ activeTab, onSelectLead, onOpenCreateLeadModal }) => {
   const { currentUser, loginSessions, addToast } = useApp();
 
   const [leaveReason, setLeaveReason] = useState('');
@@ -31,7 +32,10 @@ export const EmployeeModuleViews: React.FC<EmployeeModuleViewsProps> = ({ active
     case 'leads':
       return (
         <div className="space-y-6 animate-fade-in">
-          <LeadOwnershipMatrix onSelectLead={onSelectLead || (() => {})} />
+          <LeadOwnershipMatrix 
+            onSelectLead={onSelectLead || (() => {})} 
+            onOpenCreateLeadModal={onOpenCreateLeadModal} 
+          />
         </div>
       );
 

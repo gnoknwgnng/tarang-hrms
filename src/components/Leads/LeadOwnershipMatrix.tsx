@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Search, Eye } from 'lucide-react';
+import { Search, Eye, PlusCircle } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { Lead } from '../../types';
 
 interface LeadOwnershipMatrixProps {
   onSelectLead: (lead: Lead) => void;
+  onOpenCreateLeadModal?: () => void;
 }
 
-export const LeadOwnershipMatrix: React.FC<LeadOwnershipMatrixProps> = ({ onSelectLead }) => {
+export const LeadOwnershipMatrix: React.FC<LeadOwnershipMatrixProps> = ({ onSelectLead, onOpenCreateLeadModal }) => {
   const { currentUser, leads, users, reassignLeadRole } = useApp();
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -37,7 +38,17 @@ export const LeadOwnershipMatrix: React.FC<LeadOwnershipMatrixProps> = ({ onSele
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          {onOpenCreateLeadModal && (
+            <button
+              onClick={onOpenCreateLeadModal}
+              className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white font-bold text-xs rounded-xl shadow-md shadow-emerald-600/20 transition-all hover:scale-[1.01] active:scale-[0.99]"
+            >
+              <PlusCircle className="w-4 h-4" />
+              <span>Add New Lead</span>
+            </button>
+          )}
+
           <div className="relative">
             <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3.5 top-3" />
             <input

@@ -17,9 +17,10 @@ import { LoginSessionsLog } from '../HRMS/LoginSessionsLog';
 interface AdminModuleViewsProps {
   activeModule: AdminModuleId;
   onSelectLead?: (lead: any) => void;
+  onOpenCreateLeadModal?: () => void;
 }
 
-export const AdminModuleViews: React.FC<AdminModuleViewsProps> = ({ activeModule, onSelectLead }) => {
+export const AdminModuleViews: React.FC<AdminModuleViewsProps> = ({ activeModule, onSelectLead, onOpenCreateLeadModal }) => {
   const { users, leads, karts, loginSessions, addToast } = useApp();
 
   // State simulators for interactive features
@@ -57,6 +58,16 @@ export const AdminModuleViews: React.FC<AdminModuleViewsProps> = ({ activeModule
   ];
 
   switch (activeModule) {
+    case 'leads':
+      return (
+        <div className="space-y-6 animate-fade-in">
+          <LeadOwnershipMatrix 
+            onSelectLead={onSelectLead || (() => {})} 
+            onOpenCreateLeadModal={onOpenCreateLeadModal} 
+          />
+        </div>
+      );
+
     case 'home':
       return (
         <div className="space-y-6 animate-fade-in">

@@ -122,6 +122,7 @@ export interface LoginSession {
 // 20 Requested Admin HRMS & Operations Modules
 export type AdminModuleId = 
   | 'home'
+  | 'leads'
   | 'geo-tracking'
   | 'tasks'
   | 'managements'
