@@ -121,13 +121,12 @@ export const ProductsView: React.FC = () => {
           >
             <div>
               {/* Product Image Container */}
-              <div className="relative aspect-4/3 w-full bg-slate-100 rounded-2xl overflow-hidden mb-4 border border-slate-200/60">
+              <div className="relative h-48 w-full bg-slate-50 rounded-2xl overflow-hidden mb-4 border border-slate-200/60 flex items-center justify-center">
                 <img 
                   src={item.image} 
                   alt={item.name}
                   className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500"
                   onError={(e) => {
-                    // Fallback placeholder if image not found
                     (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=600&q=80';
                   }}
                 />
@@ -146,7 +145,7 @@ export const ProductsView: React.FC = () => {
                 </div>
 
                 {/* Status Badge Pill */}
-                <div className="absolute bottom-3 right-3">
+                <div className="absolute top-3 right-3">
                   <span className="px-2.5 py-1 text-[10px] font-extrabold rounded-lg bg-white/95 text-slate-800 border border-slate-200 shadow-sm">
                     {item.status}
                   </span>
@@ -187,54 +186,80 @@ export const ProductsView: React.FC = () => {
         ))}
       </div>
 
-      {/* Product Inspection Modal */}
+      {/* Product Inspection Modal — Perfectly Proportioned, Zero Blank Space */}
       {inspectProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-fade-in">
-          <div className="glass-panel w-full max-w-2xl overflow-hidden shadow-2xl space-y-4 p-6 relative bg-white">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fade-in overflow-y-auto">
+          <div className="glass-panel w-full max-w-2xl overflow-hidden shadow-2xl space-y-4 p-6 relative bg-white my-auto max-h-[90vh] overflow-y-auto smooth-scroll">
+            
+            {/* Close Button */}
             <button 
               onClick={() => setInspectProduct(null)}
-              className="absolute top-4 right-4 p-2 bg-slate-100 text-slate-700 hover:text-slate-900 rounded-xl border border-slate-200 transition"
+              className="absolute top-4 right-4 p-2 bg-slate-100 text-slate-700 hover:text-slate-900 rounded-xl border border-slate-200 transition z-10"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="flex items-center space-x-2">
-              <span className="px-2.5 py-1 text-[10px] font-extrabold bg-sky-100 text-sky-800 rounded-full border border-sky-200 uppercase">
-                {inspectProduct.category} Collection
-              </span>
-              <span className="text-xs text-slate-500 font-mono font-bold">{inspectProduct.id}</span>
+            {/* Modal Header */}
+            <div className="pr-10">
+              <div className="flex items-center space-x-2 mb-1">
+                <span className="px-2.5 py-0.5 text-[10px] font-extrabold bg-sky-100 text-sky-800 rounded-full border border-sky-200 uppercase tracking-wider">
+                  {inspectProduct.category} COLLECTION
+                </span>
+                <span className="text-xs text-slate-500 font-mono font-bold">{inspectProduct.id}</span>
+              </div>
+              <h2 className="text-xl font-black text-slate-900 leading-tight">{inspectProduct.name}</h2>
             </div>
 
-            <h2 className="text-xl font-black text-slate-900">{inspectProduct.name}</h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
-              <div className="bg-slate-50 p-3 rounded-2xl border border-slate-200 flex items-center justify-center">
-                <img src={inspectProduct.image} alt={inspectProduct.name} className="max-h-56 object-contain rounded-xl" />
+            {/* 2-Column Balanced Layout */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              
+              {/* Left Column: Product Image */}
+              <div className="bg-slate-50 p-3 rounded-2xl border border-slate-200 flex items-center justify-center h-full min-h-[220px]">
+                <img 
+                  src={inspectProduct.image} 
+                  alt={inspectProduct.name} 
+                  className="max-h-56 w-full object-contain rounded-xl" 
+                />
               </div>
 
-              <div className="space-y-3 text-xs">
+              {/* Right Column: Key Metrics & Description (Balanced Fill) */}
+              <div className="flex flex-col justify-between space-y-2.5 text-xs">
+                
                 <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl">
-                  <span className="text-[10px] text-emerald-800 font-bold uppercase block">MSRP List Price</span>
+                  <span className="text-[10px] text-emerald-800 font-bold uppercase tracking-wider block">MSRP List Price</span>
                   <span className="text-xl font-black text-emerald-900 font-mono">{inspectProduct.price}</span>
                 </div>
 
                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                  <span className="text-[10px] text-slate-500 font-bold uppercase block">Dimensions & Build</span>
+                  <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block">Dimensions & Build</span>
                   <span className="font-bold text-slate-900">{inspectProduct.dimensions}</span>
                 </div>
 
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                  <span className="text-[10px] text-slate-500 font-bold uppercase block">Availability Status</span>
-                  <span className="font-bold text-sky-700">{inspectProduct.status}</span>
+                <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between">
+                  <div>
+                    <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block">Availability Status</span>
+                    <span className="font-bold text-sky-700">{inspectProduct.status}</span>
+                  </div>
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
                 </div>
+
+                {/* Integrated Description Block to fill right column height evenly */}
+                <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex-1 flex flex-col justify-center">
+                  <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block mb-1">Product Description</span>
+                  <p className="text-xs text-slate-700 leading-relaxed font-medium">
+                    {inspectProduct.description}
+                  </p>
+                </div>
+
               </div>
             </div>
 
-            <div className="space-y-2 text-xs">
-              <h4 className="font-extrabold text-slate-900 text-xs">Technical Highlights & Specifications</h4>
+            {/* Technical Highlights Section */}
+            <div className="pt-3 border-t border-slate-100 space-y-2 text-xs">
+              <h4 className="font-extrabold text-slate-900 text-xs tracking-tight">Technical Highlights & Specifications</h4>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {inspectProduct.features.map((feat, idx) => (
-                  <li key={idx} className="flex items-center space-x-2 p-2 bg-slate-50 rounded-xl border border-slate-200/80 font-medium text-slate-700">
+                  <li key={idx} className="flex items-center space-x-2 p-2.5 bg-slate-50 rounded-xl border border-slate-200/80 font-medium text-slate-700">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                     <span>{feat}</span>
                   </li>
@@ -242,14 +267,16 @@ export const ProductsView: React.FC = () => {
               </ul>
             </div>
 
-            <div className="pt-4 border-t border-slate-200 flex justify-end">
+            {/* Footer Action */}
+            <div className="pt-3 border-t border-slate-100 flex justify-end">
               <button
                 onClick={() => setInspectProduct(null)}
-                className="px-5 py-2.5 bg-slate-900 text-white font-bold text-xs rounded-xl hover:bg-slate-800 transition"
+                className="px-6 py-2.5 bg-slate-900 text-white font-bold text-xs rounded-xl hover:bg-slate-800 transition shadow-sm"
               >
                 Close Specification View
               </button>
             </div>
+
           </div>
         </div>
       )}
