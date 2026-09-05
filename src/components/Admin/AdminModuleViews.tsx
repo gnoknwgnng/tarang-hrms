@@ -13,6 +13,7 @@ import { GeoTrackingView } from '../GeoTracking/GeoTrackingView';
 import { LeadOwnershipMatrix } from '../Leads/LeadOwnershipMatrix';
 import { StatCard } from '../Common/StatCard';
 import { LoginSessionsLog } from '../HRMS/LoginSessionsLog';
+import { ProductsView } from '../Products/ProductsView';
 
 interface AdminModuleViewsProps {
   activeModule: AdminModuleId;
@@ -58,6 +59,9 @@ export const AdminModuleViews: React.FC<AdminModuleViewsProps> = ({ activeModule
   ];
 
   switch (activeModule) {
+    case 'products':
+      return <ProductsView />;
+
     case 'leads':
       return (
         <div className="space-y-6 animate-fade-in">

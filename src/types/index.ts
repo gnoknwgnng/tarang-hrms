@@ -123,6 +123,7 @@ export interface LoginSession {
 export type AdminModuleId = 
   | 'home'
   | 'leads'
+  | 'products'
   | 'geo-tracking'
   | 'tasks'
   | 'managements'

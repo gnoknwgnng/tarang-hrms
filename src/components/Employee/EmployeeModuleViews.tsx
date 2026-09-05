@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { StatCard } from '../Common/StatCard';
 import { LeadOwnershipMatrix } from '../Leads/LeadOwnershipMatrix';
+import { ProductsView } from '../Products/ProductsView';
 
 interface EmployeeModuleViewsProps {
   activeTab: EmployeeTabId;
@@ -29,6 +30,9 @@ export const EmployeeModuleViews: React.FC<EmployeeModuleViewsProps> = ({ active
   const mySession = loginSessions.find(s => s.userName === currentUser.name && s.status === 'Logged In');
 
   switch (activeTab) {
+    case 'products':
+      return <ProductsView />;
+
     case 'leads':
       return (
         <div className="space-y-6 animate-fade-in">

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AdminModuleId } from '../../types';
 import { 
-  Home, UserCheck, MapPin, CheckSquare, Building2, Users, CalendarCheck, 
+  Home, UserCheck, ShoppingBag, MapPin, CheckSquare, Building2, Users, CalendarCheck, 
   CalendarOff, DollarSign, CreditCard, Receipt, FileText, Briefcase, 
   GitFork, BarChart3, HelpCircle, Award, Wallet, GraduationCap, 
   UserPlus, PackageSearch, ChevronLeft, ChevronRight, Menu, X 
@@ -39,6 +39,7 @@ export const ADMIN_MODULE_GROUPS: CategoryGroup[] = [
   {
     category: 'Field Operations & Assets',
     items: [
+      { id: 'products', label: 'Products Catalog', icon: ShoppingBag },
       { id: 'geo-tracking', label: 'Geo Tracking', icon: MapPin },
       { id: 'tasks', label: 'Task Management', icon: CheckSquare },
       { id: 'asset-tracking', label: 'Asset Tracking', icon: PackageSearch },
