@@ -1,0 +1,341 @@
+import { User, Lead, Kart } from '../types';
+
+export const DEMO_USERS: (User & { password: string })[] = [
+  {
+    id: 'usr-admin',
+    name: 'Rahul Sharma',
+    role: 'admin',
+    username: 'admin@tarang.com',
+    password: 'admin123',
+    phone: '+91 98000 11111',
+    email: 'admin@tarang.com'
+  },
+  {
+    id: 'usr-bda1',
+    name: 'Rahul Verma',
+    role: 'bda',
+    username: 'bda@tarang.com',
+    password: 'bda123',
+    phone: '+91 98000 22222',
+    email: 'bda@tarang.com',
+    area: 'Gachibowli'
+  },
+  {
+    id: 'usr-tele1',
+    name: 'Priya Patel',
+    role: 'telecaller',
+    username: 'telecaller@tarang.com',
+    password: 'tele123',
+    phone: '+91 98000 55555',
+    email: 'telecaller@tarang.com'
+  },
+  // Additional team members
+  {
+    id: 'usr-bda2',
+    name: 'Vikram Singh',
+    role: 'bda',
+    username: 'vikram@tarang.com',
+    password: 'bda123',
+    phone: '+91 98000 33333',
+    email: 'vikram@tarang.com',
+    area: 'Kondapur'
+  },
+  {
+    id: 'usr-bda3',
+    name: 'Sneha Reddy',
+    role: 'bda',
+    username: 'sneha@tarang.com',
+    password: 'bda123',
+    phone: '+91 98000 44444',
+    email: 'sneha@tarang.com',
+    area: 'Hitec City'
+  },
+  {
+    id: 'usr-tele2',
+    name: 'Ananya Rao',
+    role: 'telecaller',
+    username: 'ananya@tarang.com',
+    password: 'tele123',
+    phone: '+91 98000 66666',
+    email: 'ananya@tarang.com'
+  },
+  {
+    id: 'usr-tele3',
+    name: 'Ramesh Kumar',
+    role: 'telecaller',
+    username: 'ramesh@tarang.com',
+    password: 'tele123',
+    phone: '+91 98000 77777',
+    email: 'ramesh@tarang.com'
+  }
+];
+
+export const INITIAL_KARTS: Kart[] = [
+  { id: 'TK-001', name: 'Tarang Mobile Kart #1', location: 'Forum Sujana Mall', assignedBda: 'Sneha Reddy', status: 'Deployed' },
+  { id: 'TK-002', name: 'Tarang Mobile Kart #2', location: 'Inorbit Mall', assignedBda: 'Vikram Singh', status: 'Deployed' },
+  { id: 'TK-003', name: 'Tarang Mobile Kart #3', location: 'Sarath City Capital Mall', assignedBda: 'Rahul Verma', status: 'Active' },
+  { id: 'TK-004', name: 'Tarang Mobile Kart #4', location: 'Aparna Sarovar Community', assignedBda: 'Rahul Verma', status: 'Deployed' },
+];
+
+export const INITIAL_LEADS: Lead[] = [
+  {
+    id: 'LEAD-1001',
+    customerName: 'Suresh Kumar',
+    phone: '9876543210',
+    city: 'Hyderabad',
+    area: 'Gachibowli',
+    customerType: 'Individual',
+    source: 'Kart – Gated Community',
+    sourceLocation: 'Aparna Sarovar',
+    kartId: 'TK-004',
+    createdBy: 'Rahul Verma',
+    createdByRole: 'bda',
+    leadOwner: 'Rahul Verma',
+    telecaller: 'Priya Patel',
+    demoBda: 'Rahul Verma',
+    salesOwner: 'Rahul Verma',
+    status: 'Demo Scheduled',
+    priority: 'Hot',
+    createdDate: '2026-09-01T10:30:00Z',
+    nextFollowUpDate: '2026-09-06T11:00:00Z',
+    requirement: 'Recliner sofa & modular wardrobe for 4BHK duplex',
+    budget: 250000,
+    timeline: [
+      { id: 'tl-1', date: '2026-09-01 10:30 AM', event: 'Lead created at Aparna Sarovar Kart TK-004', actor: 'Rahul Verma', role: 'bda' },
+      { id: 'tl-2', date: '2026-09-01 10:31 AM', event: 'Assigned Telecaller Priya Patel via Round Robin', actor: 'System', role: 'admin' },
+      { id: 'tl-3', date: '2026-09-02 02:15 PM', event: 'Call connected. Customer interested in experience center demo.', actor: 'Priya Patel', role: 'telecaller' },
+      { id: 'tl-4', date: '2026-09-03 04:00 PM', event: 'Demo scheduled for 06 Sep at Gachibowli Experience Center', actor: 'Priya Patel', role: 'telecaller' }
+    ]
+  },
+  {
+    id: 'LEAD-1002',
+    customerName: 'Meera Nair Architecture Studio',
+    phone: '9812345678',
+    city: 'Hyderabad',
+    area: 'Jubilee Hills',
+    customerType: 'Architect',
+    source: 'Website',
+    sourceLocation: 'Online Direct Portal',
+    createdBy: 'Priya Patel',
+    createdByRole: 'telecaller',
+    leadOwner: 'Sneha Reddy',
+    telecaller: 'Priya Patel',
+    demoBda: 'Sneha Reddy',
+    salesOwner: 'Sneha Reddy',
+    status: 'Demo Completed',
+    priority: 'Hot',
+    createdDate: '2026-09-02T11:15:00Z',
+    nextFollowUpDate: '2026-09-07T10:00:00Z',
+    requirement: 'Bulk luxury villa furniture partnership',
+    budget: 1500000,
+    timeline: [
+      { id: 'tl-1', date: '2026-09-02 11:15 AM', event: 'Lead captured from Website enquiry form', actor: 'Priya Patel', role: 'telecaller' },
+      { id: 'tl-2', date: '2026-09-02 11:30 AM', event: 'Lead Owner assigned to Sneha Reddy', actor: 'System', role: 'admin' },
+      { id: 'tl-3', date: '2026-09-05 11:00 AM', event: 'Demo completed at Jubilee Hills Studio. Teak samples appreciated.', actor: 'Sneha Reddy', role: 'bda' },
+      { id: 'tl-4', date: '2026-09-05 11:00 AM', event: 'Sales Owner defaulted to Demo BDA Sneha Reddy', actor: 'System', role: 'admin' }
+    ]
+  },
+  {
+    id: 'LEAD-1003',
+    customerName: 'Rajesh Agarwal',
+    phone: '9988776655',
+    city: 'Hyderabad',
+    area: 'Kondapur',
+    customerType: 'Corporate',
+    source: 'Kart – Mall',
+    sourceLocation: 'Inorbit Mall',
+    kartId: 'TK-002',
+    createdBy: 'Vikram Singh',
+    createdByRole: 'bda',
+    leadOwner: 'Vikram Singh',
+    telecaller: 'Ananya Rao',
+    demoBda: 'Vikram Singh',
+    salesOwner: 'Vikram Singh',
+    status: 'Converted',
+    priority: 'Hot',
+    createdDate: '2026-09-03T14:20:00Z',
+    requirement: 'Executive desk setups and lounge seating',
+    budget: 450000,
+    timeline: [
+      { id: 'tl-1', date: '2026-09-03 02:20 PM', event: 'Created by Vikram Singh at Inorbit Mall Kart', actor: 'Vikram Singh', role: 'bda' },
+      { id: 'tl-2', date: '2026-09-04 03:00 PM', event: 'Demo completed at site', actor: 'Vikram Singh', role: 'bda' },
+      { id: 'tl-3', date: '2026-09-05 12:00 PM', event: 'Lead Converted! PO generated for ₹4,20,000', actor: 'Vikram Singh', role: 'bda' }
+    ]
+  },
+  {
+    id: 'LEAD-1004',
+    customerName: 'Kavita Reddy Design',
+    phone: '9765432109',
+    city: 'Hyderabad',
+    area: 'Banjara Hills',
+    customerType: 'Interior Designer',
+    source: 'Interior Designer',
+    sourceLocation: 'Partner Network',
+    createdBy: 'Rahul Sharma',
+    createdByRole: 'admin',
+    leadOwner: 'Sneha Reddy',
+    telecaller: 'Ramesh Kumar',
+    demoBda: 'Sneha Reddy',
+    salesOwner: 'Sneha Reddy',
+    status: 'Lost',
+    priority: 'Warm',
+    createdDate: '2026-09-04T09:45:00Z',
+    requirement: 'Custom dining set',
+    budget: 120000,
+    timeline: [
+      { id: 'tl-1', date: '2026-09-04 09:45 AM', event: 'Created by Admin Rahul Sharma', actor: 'Rahul Sharma', role: 'admin' },
+      { id: 'tl-2', date: '2026-09-05 09:00 AM', event: 'Marked as Lost due to budget constraint', actor: 'Ramesh Kumar', role: 'telecaller' }
+    ]
+  },
+  {
+    id: 'LEAD-1005',
+    customerName: 'Amitabh Joshi',
+    phone: '9898989898',
+    city: 'Hyderabad',
+    area: 'Madhapur',
+    customerType: 'Individual',
+    source: 'Kart – Mall',
+    sourceLocation: 'Inorbit Mall',
+    kartId: 'TK-002',
+    createdBy: 'Rahul Verma',
+    createdByRole: 'bda',
+    leadOwner: 'Rahul Verma',
+    telecaller: 'Priya Patel',
+    demoBda: 'Rahul Verma',
+    salesOwner: 'Rahul Verma',
+    status: 'Assigned',
+    priority: 'Hot',
+    createdDate: '2026-09-05T16:10:00Z',
+    nextFollowUpDate: '2026-09-06T10:00:00Z',
+    requirement: 'Smart modular wardrobe and electric desk',
+    budget: 180000,
+    timeline: [
+      { id: 'tl-1', date: '2026-09-05 04:10 PM', event: 'Lead recorded by BDA Rahul Verma at Kart TK-002', actor: 'Rahul Verma', role: 'bda' }
+    ]
+  },
+  {
+    id: 'LEAD-1006',
+    customerName: 'Pooja Hegde',
+    phone: '9822114433',
+    city: 'Hyderabad',
+    area: 'Gachibowli',
+    customerType: 'Individual',
+    source: 'Kart – Gated Community',
+    sourceLocation: 'My Home Bhooja',
+    kartId: 'TK-004',
+    createdBy: 'Rahul Verma',
+    createdByRole: 'bda',
+    leadOwner: 'Rahul Verma',
+    telecaller: 'Priya Patel',
+    demoBda: 'Rahul Verma',
+    salesOwner: 'Rahul Verma',
+    status: 'New',
+    priority: 'Warm',
+    createdDate: '2026-09-05T17:00:00Z',
+    requirement: 'L-shaped sofa and marble center table',
+    budget: 200000,
+    timeline: [
+      { id: 'tl-1', date: '2026-09-05 05:00 PM', event: 'Lead entered by BDA Rahul Verma', actor: 'Rahul Verma', role: 'bda' }
+    ]
+  },
+  {
+    id: 'LEAD-1007',
+    customerName: 'Dr. K. S. Rao',
+    phone: '9833221100',
+    city: 'Hyderabad',
+    area: 'Banjara Hills',
+    customerType: 'Individual',
+    source: 'Referral',
+    sourceLocation: 'Existing Client Referral',
+    createdBy: 'Priya Patel',
+    createdByRole: 'telecaller',
+    leadOwner: 'Sneha Reddy',
+    telecaller: 'Priya Patel',
+    demoBda: 'Sneha Reddy',
+    salesOwner: 'Sneha Reddy',
+    status: 'Interested',
+    priority: 'Hot',
+    createdDate: '2026-09-04T12:00:00Z',
+    nextFollowUpDate: '2026-09-06T14:00:00Z',
+    requirement: 'Orthopedic bed set and study room cabinets',
+    budget: 300000,
+    timeline: [
+      { id: 'tl-1', date: '2026-09-04 12:00 PM', event: 'Phone enquiry logged by Priya Patel', actor: 'Priya Patel', role: 'telecaller' }
+    ]
+  },
+  {
+    id: 'LEAD-1008',
+    customerName: 'Nexus Office Spaces',
+    phone: '9900112233',
+    city: 'Hyderabad',
+    area: 'Hitec City',
+    customerType: 'Office',
+    source: 'Architecture Firm',
+    sourceLocation: 'Genesis Architects',
+    createdBy: 'Rahul Sharma',
+    createdByRole: 'admin',
+    leadOwner: 'Sneha Reddy',
+    telecaller: 'Ananya Rao',
+    demoBda: 'Sneha Reddy',
+    salesOwner: 'Sneha Reddy',
+    status: 'Demo Scheduled',
+    priority: 'Hot',
+    createdDate: '2026-09-03T15:30:00Z',
+    nextFollowUpDate: '2026-09-06T15:00:00Z',
+    requirement: '50 ErgoPro office chairs & conference room table',
+    budget: 850000,
+    timeline: [
+      { id: 'tl-1', date: '2026-09-03 03:30 PM', event: 'Created by Admin', actor: 'Rahul Sharma', role: 'admin' },
+      { id: 'tl-2', date: '2026-09-04 02:00 PM', event: 'Demo scheduled at Hitec City site', actor: 'Ananya Rao', role: 'telecaller' }
+    ]
+  },
+  {
+    id: 'LEAD-1009',
+    customerName: 'Anand Mahindra Builders',
+    phone: '9844556677',
+    city: 'Hyderabad',
+    area: 'Kollur',
+    customerType: 'Builder',
+    source: 'Kart – Exhibition',
+    sourceLocation: 'HITEX Furniture Expo',
+    createdBy: 'Vikram Singh',
+    createdByRole: 'bda',
+    leadOwner: 'Vikram Singh',
+    telecaller: 'Priya Patel',
+    demoBda: 'Vikram Singh',
+    salesOwner: 'Vikram Singh',
+    status: 'Contacted',
+    priority: 'Warm',
+    createdDate: '2026-09-02T16:00:00Z',
+    nextFollowUpDate: '2026-09-07T11:00:00Z',
+    requirement: 'Model apartment furnishings',
+    budget: 600000,
+    timeline: [
+      { id: 'tl-1', date: '2026-09-02 04:00 PM', event: 'Exhibition lead created by Vikram Singh', actor: 'Vikram Singh', role: 'bda' }
+    ]
+  },
+  {
+    id: 'LEAD-1010',
+    customerName: 'Varun Tej',
+    phone: '9711223344',
+    city: 'Hyderabad',
+    area: 'Kondapur',
+    customerType: 'Individual',
+    source: 'Instagram',
+    sourceLocation: 'Social Media Ad Campaign',
+    createdBy: 'Priya Patel',
+    createdByRole: 'telecaller',
+    leadOwner: 'Rahul Verma',
+    telecaller: 'Priya Patel',
+    demoBda: 'Rahul Verma',
+    salesOwner: 'Rahul Verma',
+    status: 'New',
+    priority: 'Warm',
+    createdDate: '2026-09-05T18:00:00Z',
+    requirement: 'Minimalist outdoor patio furniture',
+    budget: 150000,
+    timeline: [
+      { id: 'tl-1', date: '2026-09-05 06:00 PM', event: 'Lead logged from Instagram lead form', actor: 'Priya Patel', role: 'telecaller' }
+    ]
+  }
+];
