@@ -69,7 +69,7 @@ export const EmployeeSidebar: React.FC<EmployeeSidebarProps> = ({ activeTab, onS
 
       {/* Sidebar Navigation */}
       <aside 
-        className={`glass-panel p-4 flex flex-col transition-all duration-300 z-40 ${
+        className={`glass-panel p-4 flex flex-col transition-all duration-300 z-40 self-start lg:sticky lg:top-20 max-h-[calc(100vh-6rem)] ${
           isOpenMobile ? 'fixed top-20 left-4 right-4 bottom-4 overflow-y-auto lg:static' : 'hidden lg:flex'
         } ${isCollapsed ? 'lg:w-20' : 'lg:w-60'}`}
       >

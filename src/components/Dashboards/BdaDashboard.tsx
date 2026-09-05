@@ -30,7 +30,7 @@ export const BdaDashboard: React.FC<BdaDashboardProps> = ({ onSelectLead, onOpen
   const myConversions = leads.filter(l => l.salesOwner === currentUser.name && l.status === 'Converted').length;
 
   return (
-    <div className="flex flex-col lg:flex-row gap-6 animate-fade-in">
+    <div className="flex flex-col lg:flex-row items-start gap-6 animate-fade-in">
       
       {/* 10 Navigation Options Sidebar */}
       <EmployeeSidebar

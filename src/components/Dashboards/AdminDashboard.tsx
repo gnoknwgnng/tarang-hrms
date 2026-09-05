@@ -12,7 +12,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onSelectLead, on
   const [activeModule, setActiveModule] = useState<AdminModuleId>('home');
 
   return (
-    <div className="flex flex-col lg:flex-row gap-6 animate-fade-in">
+    <div className="flex flex-col lg:flex-row items-start gap-6 animate-fade-in">
       
       {/* 20 Modules Categorized Sidebar / Drawer */}
       <AdminSidebar

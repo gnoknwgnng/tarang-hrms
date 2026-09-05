@@ -30,7 +30,7 @@ export const TelecallerDashboard: React.FC<TelecallerDashboardProps> = ({ onSele
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-6 animate-fade-in">
+    <div className="flex flex-col lg:flex-row items-start gap-6 animate-fade-in">
       
       {/* 10 Navigation Options Sidebar */}
       <EmployeeSidebar
