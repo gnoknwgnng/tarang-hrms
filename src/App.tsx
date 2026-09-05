@@ -37,8 +37,8 @@ const MainApp: React.FC = () => {
       <Navbar />
 
       {/* Main Tab Switcher Bar — Mobile Touch Scroll Optimized */}
-      <div className="bg-white border-b border-slate-200 px-3 sm:px-6 py-2 overflow-x-auto no-scrollbar shadow-sm">
-        <div className="max-w-7xl mx-auto flex items-center justify-between min-w-max gap-4">
+      <div className="bg-white border-b border-slate-200 px-3 sm:px-8 py-2 overflow-x-auto no-scrollbar shadow-sm">
+        <div className="w-full max-w-[1920px] mx-auto flex items-center justify-between min-w-max gap-4">
           
           <div className="flex items-center space-x-2 sm:space-x-3">
             <button
@@ -83,8 +83,8 @@ const MainApp: React.FC = () => {
         </div>
       </div>
 
-      {/* Main View Container — Mobile Spacing & Padding Optimized */}
-      <main className="flex-1 p-3 sm:p-6 max-w-7xl w-full mx-auto overflow-y-auto smooth-scroll">
+      {/* Main View Container — Expanded Desktop Width */}
+      <main className="flex-1 p-3 sm:p-6 lg:p-8 w-full max-w-[1920px] mx-auto overflow-y-auto smooth-scroll">
         {/* GUARD: Geo tracking view strictly restricted to Admin */}
         {activeMainTab === 'geo' && isAdmin ? (
           <GeoTrackingView />
