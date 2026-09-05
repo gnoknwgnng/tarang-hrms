@@ -8,7 +8,7 @@ interface LeadOwnershipMatrixProps {
 }
 
 export const LeadOwnershipMatrix: React.FC<LeadOwnershipMatrixProps> = ({ onSelectLead }) => {
-  const { leads, users, reassignLeadRole } = useApp();
+  const { currentUser, leads, users, reassignLeadRole } = useApp();
 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStatus, setSelectedStatus] = useState<string>('all');
@@ -101,51 +101,67 @@ export const LeadOwnershipMatrix: React.FC<LeadOwnershipMatrixProps> = ({ onSele
                 </td>
 
                 <td className="py-3.5 px-3 whitespace-nowrap">
-                  <select
-                    value={lead.leadOwner}
-                    onChange={(e) => reassignLeadRole(lead.id, 'leadOwner', e.target.value)}
-                    className="bg-slate-50 border border-slate-200 text-sky-700 text-[11px] font-bold rounded-xl px-2.5 py-1.5 focus:border-indigo-600 focus:outline-none"
-                  >
-                    {users.filter(u => u.role === 'bda' || u.role === 'admin').map(u => (
-                      <option key={u.id} value={u.name}>{u.name}</option>
-                    ))}
-                  </select>
+                  {currentUser?.role === 'admin' ? (
+                    <select
+                      value={lead.leadOwner}
+                      onChange={(e) => reassignLeadRole(lead.id, 'leadOwner', e.target.value)}
+                      className="bg-slate-50 border border-slate-200 text-sky-700 text-[11px] font-bold rounded-xl px-2.5 py-1.5 focus:border-indigo-600 focus:outline-none"
+                    >
+                      {users.filter(u => u.role === 'bda' || u.role === 'admin').map(u => (
+                        <option key={u.id} value={u.name}>{u.name}</option>
+                      ))}
+                    </select>
+                  ) : (
+                    <span className="font-bold text-sky-700 text-xs">{lead.leadOwner}</span>
+                  )}
                 </td>
 
                 <td className="py-3.5 px-3 whitespace-nowrap">
-                  <select
-                    value={lead.telecaller}
-                    onChange={(e) => reassignLeadRole(lead.id, 'telecaller', e.target.value)}
-                    className="bg-slate-50 border border-slate-200 text-amber-700 text-[11px] font-bold rounded-xl px-2.5 py-1.5 focus:border-indigo-600 focus:outline-none"
-                  >
-                    {users.filter(u => u.role === 'telecaller' || u.role === 'admin').map(u => (
-                      <option key={u.id} value={u.name}>{u.name}</option>
-                    ))}
-                  </select>
+                  {currentUser?.role === 'admin' ? (
+                    <select
+                      value={lead.telecaller}
+                      onChange={(e) => reassignLeadRole(lead.id, 'telecaller', e.target.value)}
+                      className="bg-slate-50 border border-slate-200 text-amber-700 text-[11px] font-bold rounded-xl px-2.5 py-1.5 focus:border-indigo-600 focus:outline-none"
+                    >
+                      {users.filter(u => u.role === 'telecaller' || u.role === 'admin').map(u => (
+                        <option key={u.id} value={u.name}>{u.name}</option>
+                      ))}
+                    </select>
+                  ) : (
+                    <span className="font-bold text-amber-700 text-xs">{lead.telecaller}</span>
+                  )}
                 </td>
 
                 <td className="py-3.5 px-3 whitespace-nowrap">
-                  <select
-                    value={lead.demoBda}
-                    onChange={(e) => reassignLeadRole(lead.id, 'demoBda', e.target.value)}
-                    className="bg-slate-50 border border-slate-200 text-emerald-700 text-[11px] font-bold rounded-xl px-2.5 py-1.5 focus:border-indigo-600 focus:outline-none"
-                  >
-                    {users.filter(u => u.role === 'bda' || u.role === 'admin').map(u => (
-                      <option key={u.id} value={u.name}>{u.name}</option>
-                    ))}
-                  </select>
+                  {currentUser?.role === 'admin' ? (
+                    <select
+                      value={lead.demoBda}
+                      onChange={(e) => reassignLeadRole(lead.id, 'demoBda', e.target.value)}
+                      className="bg-slate-50 border border-slate-200 text-emerald-700 text-[11px] font-bold rounded-xl px-2.5 py-1.5 focus:border-indigo-600 focus:outline-none"
+                    >
+                      {users.filter(u => u.role === 'bda' || u.role === 'admin').map(u => (
+                        <option key={u.id} value={u.name}>{u.name}</option>
+                      ))}
+                    </select>
+                  ) : (
+                    <span className="font-bold text-emerald-700 text-xs">{lead.demoBda}</span>
+                  )}
                 </td>
 
                 <td className="py-3.5 px-3 whitespace-nowrap">
-                  <select
-                    value={lead.salesOwner}
-                    onChange={(e) => reassignLeadRole(lead.id, 'salesOwner', e.target.value)}
-                    className="bg-slate-50 border border-slate-200 text-indigo-700 text-[11px] font-bold rounded-xl px-2.5 py-1.5 focus:border-indigo-600 focus:outline-none"
-                  >
-                    {users.filter(u => u.role === 'bda' || u.role === 'admin').map(u => (
-                      <option key={u.id} value={u.name}>{u.name}</option>
-                    ))}
-                  </select>
+                  {currentUser?.role === 'admin' ? (
+                    <select
+                      value={lead.salesOwner}
+                      onChange={(e) => reassignLeadRole(lead.id, 'salesOwner', e.target.value)}
+                      className="bg-slate-50 border border-slate-200 text-indigo-700 text-[11px] font-bold rounded-xl px-2.5 py-1.5 focus:border-indigo-600 focus:outline-none"
+                    >
+                      {users.filter(u => u.role === 'bda' || u.role === 'admin').map(u => (
+                        <option key={u.id} value={u.name}>{u.name}</option>
+                      ))}
+                    </select>
+                  ) : (
+                    <span className="font-bold text-indigo-700 text-xs">{lead.salesOwner}</span>
+                  )}
                 </td>
 
                 <td className="py-3.5 px-3 whitespace-nowrap">

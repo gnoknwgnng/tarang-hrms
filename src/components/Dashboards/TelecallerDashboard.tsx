@@ -199,7 +199,7 @@ export const TelecallerDashboard: React.FC<TelecallerDashboardProps> = ({ onSele
 
           </div>
         ) : (
-          <EmployeeModuleViews activeTab={activeNavTab} />
+          <EmployeeModuleViews activeTab={activeNavTab} onSelectLead={onSelectLead} />
         )}
       </div>
 

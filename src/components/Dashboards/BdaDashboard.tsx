@@ -257,7 +257,7 @@ export const BdaDashboard: React.FC<BdaDashboardProps> = ({ onSelectLead, onOpen
 
           </div>
         ) : (
-          <EmployeeModuleViews activeTab={activeNavTab} />
+          <EmployeeModuleViews activeTab={activeNavTab} onSelectLead={onSelectLead} />
         )}
       </div>
 

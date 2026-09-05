@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { 
-  Home, CheckSquare, PackageSearch, Clock, CalendarOff, 
+  Home, UserCheck, CheckSquare, PackageSearch, Clock, CalendarOff, 
   DollarSign, CreditCard, Receipt, GitFork, HelpCircle, 
   ChevronLeft, ChevronRight, Menu, X 
 } from 'lucide-react';
 
 export type EmployeeTabId = 
   | 'home'
+  | 'leads'
   | 'your-tasks'
   | 'your-assets'
   | 'attendance'
@@ -25,6 +26,7 @@ interface EmployeeSidebarProps {
 
 export const EMPLOYEE_NAV_ITEMS = [
   { id: 'home' as EmployeeTabId, label: 'Home', icon: Home },
+  { id: 'leads' as EmployeeTabId, label: 'Leads', icon: UserCheck },
   { id: 'your-tasks' as EmployeeTabId, label: 'Your Tasks', icon: CheckSquare },
   { id: 'your-assets' as EmployeeTabId, label: 'Your Assets', icon: PackageSearch },
   { id: 'attendance' as EmployeeTabId, label: 'Attendance', icon: Clock },

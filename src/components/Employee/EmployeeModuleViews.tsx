@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { EmployeeTabId } from './EmployeeSidebar';
 import { useApp } from '../../context/AppContext';
+import { Lead } from '../../types';
 import { 
   CheckSquare, PackageSearch, Clock, CalendarOff, DollarSign, 
   CreditCard, Receipt, GitFork, HelpCircle, Plus, FileText, 
   CheckCircle2, AlertCircle, Calendar as CalendarIcon, Shield 
 } from 'lucide-react';
 import { StatCard } from '../Common/StatCard';
+import { LeadOwnershipMatrix } from '../Leads/LeadOwnershipMatrix';
 
 interface EmployeeModuleViewsProps {
   activeTab: EmployeeTabId;
+  onSelectLead?: (lead: Lead) => void;
 }
 
-export const EmployeeModuleViews: React.FC<EmployeeModuleViewsProps> = ({ activeTab }) => {
+export const EmployeeModuleViews: React.FC<EmployeeModuleViewsProps> = ({ activeTab, onSelectLead }) => {
   const { currentUser, loginSessions, addToast } = useApp();
 
   const [leaveReason, setLeaveReason] = useState('');
@@ -25,6 +28,13 @@ export const EmployeeModuleViews: React.FC<EmployeeModuleViewsProps> = ({ active
   const mySession = loginSessions.find(s => s.userName === currentUser.name && s.status === 'Logged In');
 
   switch (activeTab) {
+    case 'leads':
+      return (
+        <div className="space-y-6 animate-fade-in">
+          <LeadOwnershipMatrix onSelectLead={onSelectLead || (() => {})} />
+        </div>
+      );
+
     case 'your-tasks':
       return (
         <div className="space-y-6 animate-fade-in">
